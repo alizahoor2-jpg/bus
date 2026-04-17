@@ -1,4 +1,8 @@
-/* Base Reset & Foundation */
+/* ============================================
+   MODERN BASE STYLES
+   Clean, minimal, contemporary
+   ============================================ */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -10,29 +14,44 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
-  line-height: 1.6;
+  line-height: var(--leading-relaxed);
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
   min-height: 100vh;
+  letter-spacing: var(--tracking-normal);
 }
 
+/* Selection */
+::selection {
+  background: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
+/* Links */
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-base);
+  transition: color var(--transition-fast);
 }
 
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Buttons */
 button {
   font-family: inherit;
   cursor: pointer;
@@ -40,72 +59,116 @@ button {
   background: none;
 }
 
+/* Lists */
 ul, ol {
   list-style: none;
 }
 
-/* Container */
+/* Focus styles */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
 .container {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 var(--space-4);
-  }
-}
+/* ============================================
+   TYPOGRAPHY
+   Modern, tight, refined
+   ============================================ */
 
-/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
   color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
 }
 
-h1 { font-size: var(--text-5xl); }
-h2 { font-size: var(--text-4xl); }
-h3 { font-size: var(--text-3xl); }
-h4 { font-size: var(--text-2xl); }
-h5 { font-size: var(--text-xl); }
-h6 { font-size: var(--text-lg); }
+h1 {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-extrabold);
+}
 
-/* Section Styles */
+h2 {
+  font-size: var(--text-4xl);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+h6 {
+  font-size: var(--text-lg);
+}
+
+p {
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================
+   SECTIONS
+   Generous, breathable spacing
+   ============================================ */
+
 section {
-  padding: var(--space-16) 0;
+  padding: clamp(4rem, 8vw, 8rem) 0;
 }
 
-@media (max-width: 768px) {
-  section {
-    padding: var(--space-10) 0;
-  }
+/* Section spacing variations */
+section.compact {
+  padding: clamp(3rem, 6vw, 5rem) 0;
 }
 
-/* Section Title */
+section.spacious {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
 .section-header {
   text-align: center;
-  margin-bottom: var(--space-12);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .section-title {
-  font-size: var(--text-4xl);
+  font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: var(--space-4);
   position: relative;
   display: inline-block;
 }
 
+/* Modern underline accent */
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -12px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 48px;
   height: 3px;
   background: var(--color-accent);
+  border-radius: var(--radius-full);
 }
 
 .section-subtitle {
@@ -115,69 +178,120 @@ section {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  line-height: var(--leading-relaxed);
 }
 
-/* Buttons */
+/* ============================================
+   BUTTONS
+   Modern, pill-shaped, refined
+   ============================================ */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-4) var(--space-8);
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem);
   font-size: var(--text-sm);
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-button);
   transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
   background: var(--color-text-primary);
-  color: var(--color-bg-secondary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
   background: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--color-text-primary);
-  border: 1px solid var(--color-border-dark);
+  border: var(--border);
 }
 
 .btn-secondary:hover {
   border-color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
   transform: translateY(-2px);
 }
 
 .btn-accent {
   background: var(--color-accent);
-  color: var(--color-bg-secondary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-accent:hover {
   background: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
-/* Utility Classes */
+/* Button sizes */
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+}
+
+.btn-lg {
+  padding: var(--space-5) var(--space-8);
+  font-size: var(--text-base);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
 .text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
 .text-muted { color: var(--color-text-muted); }
+.text-secondary { color: var(--color-text-secondary); }
+
 .flex { display: flex; }
 .flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+
 .grid { display: grid; }
 .hidden { display: none; }
 
-/* Animations */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ============================================
+   ANIMATIONS
+   Subtle, refined, professional
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -185,15 +299,21 @@ section {
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-40px);
   }
   to {
     opacity: 1;
@@ -204,7 +324,7 @@ section {
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(40px);
   }
   to {
     opacity: 1;
@@ -212,24 +332,89 @@ section {
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s var(--transition-smooth) forwards;
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Animation classes */
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn var(--transition-slow) var(--ease-out-expo) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--transition-slower) var(--ease-out-expo) forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown var(--transition-slower) var(--ease-out-expo) forwards;
 }
 
 .animate-slide-in-left {
-  animation: slideInLeft 0.6s var(--transition-smooth) forwards;
+  animation: slideInLeft var(--transition-slower) var(--ease-out-expo) forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.6s var(--transition-smooth) forwards;
+  animation: slideInRight var(--transition-slower) var(--ease-out-expo) forwards;
 }
 
-/* Staggered animation delays */
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
+.animate-scale-in {
+  animation: scaleIn var(--transition-slower) var(--ease-out-expo) forwards;
+}
+
+.animate-float {
+  animation: float 3s var(--ease-in-out-quad) infinite;
+}
+
+/* Stagger delays for sequential animations */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ============================================
+   PAGE LOAD
+   ============================================ */
+
+body {
+  opacity: 0;
+  animation: pageFadeIn 0.6s var(--ease-out-expo) forwards;
+}
+
+@keyframes pageFadeIn {
+  to { opacity: 1; }
+}
